@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": 1,
+   "execution_count": 80,
    "id": "38dc5873-33b2-45a4-b086-0a3b6fc47c3c",
    "metadata": {},
    "outputs": [],
@@ -17,12 +17,14 @@
     "import statsmodels.api as sm\n",
     "import statsmodels.formula.api as smf\n",
     "import sklearn\n",
-    "from sklearn.model_selection import train_test_split"
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.linear_model import LinearRegression\n",
+    "from sklearn.metrics import mean_squared_error"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 73,
    "id": "84add4d6-34bb-488c-ba90-9f365585a684",
    "metadata": {},
    "outputs": [],
@@ -43,7 +45,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 74,
    "id": "0c448c39-e64b-44fe-86f5-c780c2bcf983",
    "metadata": {},
    "outputs": [
@@ -84,7 +86,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 4,
+   "execution_count": 75,
    "id": "9e67b5ae-b9fd-4b36-b593-350f02957514",
    "metadata": {},
    "outputs": [],
@@ -108,7 +110,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 5,
+   "execution_count": 76,
    "id": "c2374563-9b8f-44fa-87da-391b468fa3fd",
    "metadata": {},
    "outputs": [
@@ -122,7 +124,7 @@
       "Model:                            OLS   Adj. R-squared:                  0.529\n",
       "Method:                 Least Squares   F-statistic:                     1573.\n",
       "Date:                Wed, 17 Sep 2025   Prob (F-statistic):               0.00\n",
-      "Time:                        21:44:52   Log-Likelihood:                -5015.8\n",
+      "Time:                        14:50:46   Log-Likelihood:                -5015.8\n",
       "No. Observations:                7000   AIC:                         1.004e+04\n",
       "Df Residuals:                    6994   BIC:                         1.008e+04\n",
       "Df Model:                           5                                         \n",
@@ -170,7 +172,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 6,
+   "execution_count": 77,
    "id": "79a0d48c-dec2-408c-8a80-5aca5a47fb12",
    "metadata": {},
    "outputs": [],
@@ -189,7 +191,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 7,
+   "execution_count": 78,
    "id": "09494780-ec03-4e67-a0ab-322876516442",
    "metadata": {},
    "outputs": [],
@@ -201,7 +203,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 79,
    "id": "e08981ab-4595-4415-82d9-bfb0f69e0893",
    "metadata": {},
    "outputs": [
@@ -240,62 +242,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": null,
    "id": "a334d4fa-6804-4701-b98b-7d447581bf69",
    "metadata": {},
-   "outputs": [
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
-      "               mean       std\n",
-      "Intercept -1.327371  0.010017\n",
-      "x1         0.232018  0.002619\n",
-      "x2        -0.004880  0.003324\n",
-      "x3         0.729014  0.011309\n",
-      "x4         0.165079  0.011594\n",
-      "x2_sq     -0.304516  0.004015\n",
-      "                            OLS Regression Results                            \n",
-      "==============================================================================\n",
-      "Dep. Variable:                      y   R-squared:                       0.529\n",
-      "Model:                            OLS   Adj. R-squared:                  0.529\n",
-      "Method:                 Least Squares   F-statistic:                     1573.\n",
-      "Date:                Wed, 17 Sep 2025   Prob (F-statistic):               0.00\n",
-      "Time:                        21:44:53   Log-Likelihood:                -5015.8\n",
-      "No. Observations:                7000   AIC:                         1.004e+04\n",
-      "Df Residuals:                    6994   BIC:                         1.008e+04\n",
-      "Df Model:                           5                                         \n",
-      "Covariance Type:            nonrobust                                         \n",
-      "==============================================================================\n",
-      "                 coef    std err          t      P>|t|      [0.025      0.975]\n",
-      "------------------------------------------------------------------------------\n",
-      "const         -1.3462      0.016    -82.353      0.000      -1.378      -1.314\n",
-      "x1             0.2270      0.006     38.714      0.000       0.216       0.239\n",
-      "x2            -0.0049      0.006     -0.835      0.404      -0.017       0.007\n",
-      "x3             0.7457      0.021     36.372      0.000       0.706       0.786\n",
-      "x4             0.1685      0.020      8.244      0.000       0.128       0.209\n",
-      "x2_sq         -0.2996      0.004    -70.543      0.000      -0.308      -0.291\n",
-      "==============================================================================\n",
-      "Omnibus:                        0.634   Durbin-Watson:                   1.978\n",
-      "Prob(Omnibus):                  0.728   Jarque-Bera (JB):                0.646\n",
-      "Skew:                          -0.023   Prob(JB):                        0.724\n",
-      "Kurtosis:                       2.990   Cond. No.                         8.31\n",
-      "==============================================================================\n",
-      "\n",
-      "Notes:\n",
-      "[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n",
-      "CONLUSION\n",
-      "The bootstrap results very closely match the estimates from our original OLS validation training model. On average, the bootstrap means were off by about 0.01-0.02. The standard deviations from bootstrapping are small and approximate the standard error values from the original regression, indicating high precision in coefficients and good reliability in our  standard errors. Overall, this makes us more confident in the original results provided from validation and indicates that our model is less susceptible to sampling variability, performing consistently across resamples. This makes sense, because there was only a tiny amount of a noise added when simulating the data. Not only did our model generalize well with new test data without evidence of overfitting, but it also demonstrated stability across resampling. \n"
-     ]
-    }
-   ],
+   "outputs": [],
    "source": [
     "# STEP 8. What can you say about the coefficients in STEP #4 when looking at STEP #7?\n",
-    "print(bootstrap_summary)\n",
-    "print(results.summary()) \n",
     "\n",
-    "print('''CONLUSION\n",
-    "The bootstrap results very closely match the estimates from our original OLS validation training model. On average, the bootstrap means were off by about 0.01-0.02. The standard deviations from bootstrapping are small and approximate the standard error values from the original regression, indicating high precision in coefficients and good reliability in our  standard errors. Overall, this makes us more confident in the original results provided from validation and indicates that our model is less susceptible to sampling variability, performing consistently across resamples. This makes sense, because there was only a tiny amount of a noise added when simulating the data. Not only did our model generalize well with new test data without evidence of overfitting, but it also demonstrated stability across resampling. ''')"
+    "## The coefficients when doing the validation are very similar to the coefficients when doing the bootstrapping. "
    ]
   }
  ],
