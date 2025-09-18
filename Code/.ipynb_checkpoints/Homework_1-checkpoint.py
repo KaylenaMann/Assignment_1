@@ -122,7 +122,7 @@
       "Model:                            OLS   Adj. R-squared:                  0.529\n",
       "Method:                 Least Squares   F-statistic:                     1573.\n",
       "Date:                Wed, 17 Sep 2025   Prob (F-statistic):               0.00\n",
-      "Time:                        21:44:52   Log-Likelihood:                -5015.8\n",
+      "Time:                        22:27:53   Log-Likelihood:                -5015.8\n",
       "No. Observations:                7000   AIC:                         1.004e+04\n",
       "Df Residuals:                    6994   BIC:                         1.008e+04\n",
       "Df Model:                           5                                         \n",
@@ -261,7 +261,7 @@
       "Model:                            OLS   Adj. R-squared:                  0.529\n",
       "Method:                 Least Squares   F-statistic:                     1573.\n",
       "Date:                Wed, 17 Sep 2025   Prob (F-statistic):               0.00\n",
-      "Time:                        21:44:53   Log-Likelihood:                -5015.8\n",
+      "Time:                        22:28:02   Log-Likelihood:                -5015.8\n",
       "No. Observations:                7000   AIC:                         1.004e+04\n",
       "Df Residuals:                    6994   BIC:                         1.008e+04\n",
       "Df Model:                           5                                         \n",
@@ -284,7 +284,7 @@
       "\n",
       "Notes:\n",
       "[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n",
-      "CONLUSION\n",
+      "CONCLUSION\n",
       "The bootstrap results very closely match the estimates from our original OLS validation training model. On average, the bootstrap means were off by about 0.01-0.02. The standard deviations from bootstrapping are small and approximate the standard error values from the original regression, indicating high precision in coefficients and good reliability in our  standard errors. Overall, this makes us more confident in the original results provided from validation and indicates that our model is less susceptible to sampling variability, performing consistently across resamples. This makes sense, because there was only a tiny amount of a noise added when simulating the data. Not only did our model generalize well with new test data without evidence of overfitting, but it also demonstrated stability across resampling. \n"
      ]
     }
@@ -294,7 +294,7 @@
     "print(bootstrap_summary)\n",
     "print(results.summary()) \n",
     "\n",
-    "print('''CONLUSION\n",
+    "print('''CONCLUSION\n",
     "The bootstrap results very closely match the estimates from our original OLS validation training model. On average, the bootstrap means were off by about 0.01-0.02. The standard deviations from bootstrapping are small and approximate the standard error values from the original regression, indicating high precision in coefficients and good reliability in our  standard errors. Overall, this makes us more confident in the original results provided from validation and indicates that our model is less susceptible to sampling variability, performing consistently across resamples. This makes sense, because there was only a tiny amount of a noise added when simulating the data. Not only did our model generalize well with new test data without evidence of overfitting, but it also demonstrated stability across resampling. ''')"
    ]
   }
